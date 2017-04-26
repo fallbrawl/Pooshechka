@@ -29,7 +29,7 @@ public class Utils {
      * Query the USGS dataset and return an {@link Status} object to represent a single earthquake.
      */
 
-    public static ArrayList<Status> fetchEarthquakeData(String requestUrl) {
+    public static ArrayList<Status> fetchStatusData(String requestUrl) {
         // Create URL object
         URL url = createUrl(requestUrl);
 

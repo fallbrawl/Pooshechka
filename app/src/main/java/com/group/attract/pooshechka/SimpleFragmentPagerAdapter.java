@@ -17,13 +17,7 @@ import android.text.style.ImageSpan;
 public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
 
     final int PAGE_COUNT = 2;
-    private String tabTitles[] = new String[] { "Water", "Status"};
     private Context context;
-
-    private int[] imageResId = {
-            R.drawable.ic_status_144,
-            R.drawable.ic_water_144,
-    };
 
     public SimpleFragmentPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
@@ -45,7 +39,6 @@ public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
                 return new WaterFragment();
             }
         }
-
 
     @Override
     public CharSequence getPageTitle(int position) {

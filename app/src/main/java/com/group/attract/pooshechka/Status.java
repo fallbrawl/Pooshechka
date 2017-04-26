@@ -5,6 +5,7 @@ package com.group.attract.pooshechka;
  */
 
 public class Status {
+
     // Date of request
     private String mStatus;
 
@@ -15,7 +16,7 @@ public class Status {
     private int mStatusCode;
 
     /*
-    * Create a new AndroidFlavor object.
+    * Create a new Status object.
     *
     * @param vStatus is the name of the Android version (e.g. Gingerbread)
     * @param vNumber is the corresponding Android version number (e.g. 2.3-2.7)
@@ -29,21 +30,21 @@ public class Status {
     }
 
     /**
-     * Get the name of the Android version
+     * Get the date of the Status request
      */
     public String getDate() {
         return mStatus;
     }
 
     /**
-     * Get the Android version number
+     * Get the name of resource
      */
     public String getResourceName() {
         return mResourceName;
     }
 
     /**
-     * Get the image resource ID
+     * Get the status code
      */
     public int getStatus() {
         return mStatusCode;

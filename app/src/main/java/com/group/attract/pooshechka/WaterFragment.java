@@ -4,7 +4,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +22,6 @@ import java.io.IOException;
 
 public class WaterFragment extends Fragment {
 
-    Elements response;
     public ImageView imageView;
     private final String url = "http://infoxvod.com.ua/information/remonty";
 
@@ -75,7 +73,6 @@ public class WaterFragment extends Fragment {
         @Override
         protected void onPostExecute(Boolean contains) {
 
-            Log.w("smth", contains.toString());
             if (contains){
                 imageView.setBackgroundResource(R.drawable.yes_580px);
             } else {
