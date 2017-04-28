@@ -67,6 +67,8 @@ public class WaterFragment extends Fragment {
                 e.printStackTrace();
             }
 
+
+
             return response.toString().toLowerCase().contains("черноморского");
         }
 

@@ -21,9 +21,9 @@ import java.util.ArrayList;
  * Created by paul on 22.04.17.
  */
 
-public class Utils {
+public class UtilsJson {
     /** Tag for the log messages */
-    public static final String LOG_TAG = Utils.class.getSimpleName();
+    public static final String LOG_TAG = UtilsJson.class.getSimpleName();
 
     /**
      * Query the USGS dataset and return an {@link Status} object to represent a single earthquake.
@@ -35,17 +35,15 @@ public class Utils {
 
         // Perform HTTP request to the URL and receive a JSON response back
         String jsonResponse = null;
+
         try {
             jsonResponse = makeHttpRequest(url);
         } catch (IOException e) {
             Log.e(LOG_TAG, "Error closing input stream", e);
         }
 
-        // Extract relevant fields from the JSON response and create an {@link Event} object
-        ArrayList<Status> status = extractFeatureFromJson(jsonResponse);
-
         // Return the {@link Event}
-        return status;
+        return extractFeatureFromJson(jsonResponse);
     }
 
     /**
@@ -134,6 +132,7 @@ public class Utils {
 
         // If the JSON string is empty or null, then return early.
         if (TextUtils.isEmpty(statusJSON)) {
+            Log.v("json1","json string is empty!!!");
             return null;
         }
 
@@ -160,24 +159,13 @@ public class Utils {
 
                     statusList.add(new Status(title, numberOfPeople, statusCode));
                 }
-
-
-//                // Extract out the first feature (which is an earthquake)
-//                JSONObject firstFeature = statusArray.getJSONObject(0);
-//                JSONObject properties = firstFeature.getJSONObject("properties");
-//
-//                // Extract out the title, number of people, and perceived strength values
-//                String title = properties.getString("title");
-//                String numberOfPeople = properties.getString("felt");
-//                String statusCode = properties.getString("cdi");
-//
-//                // Create a new {@link Event} object
-//                return new Status(title, numberOfPeople, statusCode);
-
             }
             return statusList;
+
         } catch (JSONException e) {
-            Log.e(LOG_TAG, "Problem parsing the earthquake JSON results", e);
+            statusList.add(new Status("Many", "Errors", 3));
+            Log.e(LOG_TAG, "Problem parsing the status JSON results", e);
+            return statusList;
         }
-        return null;
+        //return null;
 }}
